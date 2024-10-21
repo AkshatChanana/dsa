@@ -58,3 +58,11 @@
 //     towerOfHanoi(numOfDisks-1, usingRod, toRod, fromRod)
 // }
 // towerOfHanoi(3,'A','C','B')
+
+// Some techniques for algorithm design
+
+// Brute Force (Loops/Using Memoization where possible) - Simple and Exhaustive technique to evaluate every possible outcome to find the best solution, eg: Cartesian Product
+// Greedy (Graphs/Trees)- Best option at current time without consideration for future, eg: Dijkstra's algorithm, Prim's algorithm, Kruskal's algorithm
+// Divide and Conquer (Recursion/Loops) - Divide the problem into smaller sub-problems and combine them, eg: Binary Search, Quick Sort, Merge Sort, Tower Of Hanoi
+// Dynamic Programming (Memoization with Recursion/Loops) - Store and use previously solved sub-problems to solve larger problems, eg: Fibonacci series, Climbing Staircase
+// Backtracking (Trees/Recursion) - Generate all possible solutions, check if a path satisfies constraints, continue or backtrack to continue to different path, eg: N-Queens Problem  
