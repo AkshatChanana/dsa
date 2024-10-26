@@ -1,5 +1,3 @@
-// Data Structures 
-
 // Built in Data Structures - Arrays, Objects, Sets, Maps
 
 // Arrays
