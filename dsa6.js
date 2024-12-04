@@ -1,4 +1,4 @@
-// Custom Non-Linear Data Structures - Hash Tables, Trees, Graphs
+// Custom Non-Linear Data Structures - Hash Tables, Trees, Heaps & Graphs
 
 // Hash Tables 
 
@@ -421,3 +421,106 @@
 // }
 //}
 // }
+
+// Graphs
+
+// consists of a finite number of vertices (nodes) connected by edges
+// graphs can be directed or undirected (unidirectional or bidirectional)
+// graphs can be weighted or unweighted
+// graphs can be connected or disconnected
+// graphs can have cycles or acyclic
+// graphs can have self-loops (edges that connect a vertex to itself)
+// used in Google Maps, social networks, routing systems, and many other applications
+// Graphs are represented using adjacency lists or adjacency matrices
+
+// Adjacency Matrix
+
+// 2D array of size n x n where n is the number of vertices in the graph
+// each row and column represents a vertex in the graph
+// each element in the matrix represents the weight of the edge between the two vertices
+// if the element is 0, there is no edge between the two vertices
+// if the element is 1, there is an edge between the two vertices
+
+//   A B C
+// A 0 1 0
+// B 1 0 1
+// C 0 1 0
+
+// const matrix = [
+//     [0, 1, 0],
+//     [1, 0, 1],
+//     [0, 1, 0]
+// ]
+// console.log(matrix[0][1]) // 1 => A to B connected
+
+// Adjacency List
+
+// vertices stored in a map like structure where every vertex stores a list of its adjacent vertices
+
+// A -> B
+// B -> A,C
+// C -> B
+
+// let adjacencyList = {
+//     'A': ['B'],
+//     'B': ['A', 'C'],
+//     'C': ['B']
+// }
+
+// console.log(adjacencyList['B']) // B connected to A and C
+
+// Adjacency List more storage efficient as it only stores values where there is an edge
+// unlike adjacency matrix where empty elements are also stored
+
+// with adjacency list, insertion and finding adjacent nodes are O(1) 
+// unlike adjacency matrix where they are O(n)
+
+// Graph Implementation
+
+// class Graph {
+//     constructor(){
+//         this.adjacencyList = {}
+//     }
+//     addVertex(vertex){
+//         if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = new Set()
+//     }
+//     addEdge(vertex1, vertex2){
+//         if(!this.adjacencyList[vertex1]) this.addVertex(vertex1)
+//         if(!this.adjacencyList[vertex2]) this.addVertex(vertex2)
+//         this.adjacencyList[vertex1].add(vertex2)
+//         this.adjacencyList[vertex2].add(vertex1)
+//     }
+//     display(){
+//         for (const vertex in this.adjacencyList) {
+//             console.log(vertex + " -> " + [...this.adjacencyList[vertex]])
+//         }
+//     }
+//     hasEdge(vertex1, vertex2){
+//         return this.adjacencyList[vertex1].has(vertex2) && this.adjacencyList[vertex2].has(vertex1)
+//     }
+//     removeEdge(vertex1, vertex2){
+//         this.adjacencyList[vertex1].delete(vertex2)
+//         this.adjacencyList[vertex2].delete(vertex1)
+//     }
+//     removeVertex(vertex){ 
+//         if(!this.adjacencyList[vertex]) return
+//         for (const adjacentVertex of this.adjacencyList[vertex]) {
+//             this.removeEdge(vertex, adjacentVertex)
+//         }
+//         delete this.adjacencyList[vertex]
+//     }
+// }
+
+// const graph = new Graph()
+// graph.addVertex('A')
+// graph.addVertex('B')
+// graph.addVertex('C')
+// graph.addEdge('A', 'B')
+// graph.addEdge('B', 'C')
+// graph.display()
+// console.log(graph.hasEdge('A', 'B'))
+// console.log(graph.hasEdge('A', 'C'))
+// graph.removeEdge('A', 'B')
+// graph.display()
+// graph.removeVertex('B')
+// graph.display()
