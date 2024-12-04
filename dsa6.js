@@ -87,3 +87,337 @@
 // map.remove('mane')
 // map.display()
 
+
+// Trees
+
+// Hierarchical Data Structure with parent and child nodes 
+// Binary Trees - Each node has at most 2 children
+
+// Binary Search Trees - Binary Trees where each left node is less than its parent and each right node is greater than its parent
+
+// class Node{
+//     constructor(value){
+//         this.value = value
+//         this.left = null
+//         this.right = null
+//     }
+// }
+
+// class BinarySearchTree{
+//     constructor(){
+//         this.root = null
+//     }
+
+//     isEmpty(){ // O(1)
+//         return this.root === null
+//     }
+
+//     insert(value){ // O(log n)
+//         let newNode = new Node(value)
+//         if(this.isEmpty()) this.root = newNode
+//         else{
+//             this.insertNode(this.root, newNode)
+//         }
+//     }
+
+//     insertNode(root,newNode){ // O(log n)
+//         if(newNode.value < root.value){
+//             if(root.left === null) root.left = newNode
+//             else this.insertNode(root.left, newNode)
+//         }
+//         else{
+//             if(root.right === null) root.right = newNode
+//             else this.insertNode(root.right, newNode)
+//         }
+//     }
+
+//     search(root,value){ // O(log n)
+//         if(!root) {
+//             return false
+//         }
+//         else{
+//             if(root.value === value) return true
+//             else if(value < root.value){
+//                 return this.search(root.left, value)
+//             }
+//             else{
+//                 return this.search(root.right, value)
+//             }
+//         }
+//     }
+
+//     // DFS Search traversals
+
+//     // preorder DFS - root, left, right
+//     // inorder DFS - left, root, right
+//     // postorder DFS - left, right, root
+
+//     preOrderDFS(root){ // O(n)
+//         if(root) {
+//             console.log(root.value)
+//             this.preOrderDFS(root.left)
+//             this.preOrderDFS(root.right)
+//         }
+//     }
+
+//     inOrderDFS(root){ // O(n)
+//         if(root){
+//             this.inOrderDFS(root.left)
+//             console.log(root.value)
+//             this.inOrderDFS(root.right)
+//         }
+//     }
+
+//     postOrderDFS(root){ // O(n)
+//         if(root){
+//             this.postOrderDFS(root.left)
+//             this.postOrderDFS(root.right)
+//             console.log(root.value)
+//         }
+//     }
+
+//     // BFS Search traversal
+
+//     // create a queue and enqueue the root node
+//     // while the queue is not empty, dequeue the first node and print it
+//     // if the left child of the dequeued node is not null, enqueue it
+//     // if the right child of the dequeued node is not null, enqueue it
+//     // repeat this process until the queue is empty
+
+
+//     levelOrderBFS(){ // O(n)
+//         let queue = new Queue()
+//         queue.enqueue(this.root)
+//         while(queue.size()){
+//             let curr = queue.peek()
+//             queue.dequeue()
+//             console.log(curr.value)
+//             if (curr.left) queue.enqueue(curr.left)
+//             if (curr.right) queue.enqueue(curr.right)
+//         }
+
+//         // alternatively for smaller implementations can use arrays for easier implementation
+//         // but dequeue operation will have O(n) time complexity
+
+//         // let queueArr = []
+//         // queueArr.push(this.root)
+//         // while(queueArr.length){
+//         //     let curr = queueArr.shift()
+//         //     console.log(curr.value)
+//         //     if (curr.left) queue.push(curr.left)
+//         //     if (curr.right) queue.push(curr.right)
+//         // }
+
+//     }
+
+//     min(root){
+//         if(!root.left) return root.value
+//         else return this.min(root.left)
+//     }
+
+//     max(root){
+//         if(!root.right) return root.value
+//         else return this.max(root.right)
+//     }
+
+//     delete(value){
+//         this.root = this.deleteNode(this.root, value)
+//     }
+
+//     deleteNode(root, value){
+//         if(root === null) return null
+//         else{
+//             if(value < root.value) root.left = this.deleteNode(root.left, value)
+//             else if (value > root.value) root.right = this.deleteNode(root.right, value)
+//             else{
+//                 // Case 1 : leaf node
+//                 if(!root.left && !root.right){
+//                     return null
+//                 }
+//                 // Case 2: One child, return the child to point to previous node's left or right
+//                 if(!root.left){
+//                     return root.right
+//                 }
+//                 else if (!root.right){
+//                     return root.left
+//                 }
+//                 // Case 3: 2 Children, copy the inOrder successor value to the root and delete the inOrder successor (min value in right subtree)
+//                 root.value = this.min(root.right)
+//                 root.right = this.deleteNode(root.right, root.value)
+//             }
+//             return root
+//         }
+//     }
+
+// }
+
+// class Queue{
+//     constructor(){
+//         this.items = {}
+//         this.rear = 0
+//         this.front = 0
+//     }
+//     enqueue(element){
+//         this.items[this.rear] = element
+//         this.rear++
+//     }
+//     dequeue(){
+//         delete this.items[this.front]
+//         this.front++
+//     }
+//     peek(){
+//         return this.items[this.front]
+//     }
+//     isEmpty(){
+//         return this.rear - this.front === 0
+//     }
+//     size(){
+//         return this.rear - this.front
+//     }
+//     clear(){
+//         this.items = {}
+//         this.rear = 0
+//         this.front = 0
+//     }
+//     print(){
+//         console.log(this.items)
+//     }
+// }
+
+// let bst = new BinarySearchTree()
+// console.log(bst.isEmpty())
+// bst.insert(10)
+// bst.insert(5)
+// bst.insert(15)
+// bst.insert(3)
+// bst.insert(7)
+// bst.insert(20)
+// bst.insert(13)
+// // console.log(bst.search(bst.root, 10))
+// // console.log(bst.search(bst.root, 5))
+// // console.log(bst.search(bst.root, 15))
+// // console.log(bst.search(bst.root, 20))
+// // bst.preOrderDFS(bst.root)
+// // bst.inOrderDFS(bst.root)
+// // bst.postOrderDFS(bst.root)
+// bst.delete(10)
+// bst.levelOrderBFS()
+// // console.log(bst.min(bst.root))
+// // console.log(bst.max(bst.root))
+
+// Binary Heaps (Min/Max Heap)
+
+// parent node must have only at most 2 children
+// all levels except the last level must be full
+// all nodes must be filled from left to right
+// min-heap: every parent node must be smaller than its children - root node is always smallest
+// max-heap: every parent node must be greater than its children - root node is always largest
+
+// Representation of Binary Heaps in an Array
+// root node = 0 index
+// parent node = Floor((i - 1)/2)
+// left child node = 2i + 1
+// right child node = 2i + 2
+
+// class MinHeap{
+//     constructor(){
+//         this.storage = []
+//         this.size = 0
+//     }
+//     getParentIndex(index){
+//         return Math.floor((index - 1)/2)
+//     }
+//     getLeftChildIndex(index){
+//         return 2*index + 1
+//     }
+//     getRightChildIndex(index){
+//         return 2*index + 2
+//     }
+//     hasParent(index){
+//         return this.getParentIndex(index) >= 0
+//     }
+//     hasLeftChild(index){
+//         return this.getLeftChildIndex(index) < this.size
+//     }
+//     hasRightChild(index){
+//         return this.getRightChildIndex(index) < this.size
+//     }
+//     swap(index1, index2){
+//         let temp = this.storage[index1]
+//         this.storage[index1] = this.storage[index2]
+//         this.storage[index2] = temp
+//     }
+//     parent(index){
+//         return this.storage[this.getParentIndex(index)]
+//     }
+//     leftChild(index){
+//         return this.storage[this.getLeftChildIndex(index)]
+//     }
+//     rightChild(index){
+//         return this.storage[this.getRightChildIndex(index)]
+//     }
+//     insert(value){
+//         this.storage[this.size] = value
+//         this.size++
+//         this.heapifyUp()
+//     }
+//     heapifyUp(){
+//         let index = this.size - 1
+//         while(this.hasParent(index) && this.parent(index) > this.storage[index]){
+//             this.swap(this.getParentIndex(index), index)
+//             index = this.getParentIndex(index)
+//         }
+//     }
+//     // recursive implementation
+//     // insert(value){
+//     //     this.storage[this.size] = value
+//     //     this.size++
+//     //     this.heapifyUp(this.size - 1)
+//     //}
+//     // heapifyUp(index){
+//     //     if(this.hasParent(index) && this.parent(index) > this.storage[index]){
+//     //         this.swap(this.getParentIndex(index), index)
+//     //         this.heapifyUp(this.getParentIndex(index))
+//     //     }
+//     // }
+//     removeMin(){
+//         if(this.size === 0){
+//             throw new Error("Heap is empty")
+//         }
+//         let min = this.storage[0]
+//         this.storage[0] = this.storage[this.size - 1]
+//         this.size--
+//         this.heapifyDown()
+//         return min
+//     }
+//     heapifyDown(){
+//         let index = 0
+//         while(this.hasLeftChild(index)){
+//             let smallerChildIndex = this.getLeftChildIndex(index)
+//             if(this.hasRightChild(index) && this.rightChild(index) < this.leftChild(index)) smallerChildIndex = this.getRightChildIndex(index)
+//             if(this.storage[index] < this.storage[smallerChildIndex]) break
+//             this.swap(index, smallerChildIndex)
+//             index = smallerChildIndex
+//         }
+//     }
+// recursive implementation
+// removeMin(){
+//     if(this.size === 0){
+//         throw new Error("Heap is empty")
+//     }
+//     let min = this.storage[0]
+//     this.storage[0] = this.storage[this.size - 1]
+//     this.size--
+//     this.heapifyDown(0)
+//     return min
+// }
+// heapifyDown(index){
+//  let smallest = index
+//  if(this.hasLeftChild(index) && this.leftChild(index) < this.storage[index]) smallest = this.getLeftChildIndex(index)
+//  if(this.hasRightChild(index) && this.rightChild(index) < this.storage[index]) smallest = this.getRightChildIndex(index)
+//  if(smallest !== index){
+//      this.swap(smallest, index)
+//      this.heapifyDown(smallest)
+// }
+//}
+// }

@@ -37,7 +37,7 @@
 
 // Quick Sort - O(n^2) Worst Case when array is sorted
 // O(nlogn) Average Case
-// let arr = [-6,-10,20,8,-2,4]
+// let arr = [-6,-10,20,8,8,-2,4]
 // function quickSort(arr){
 //     if(arr.length < 2) return arr
 //     let pivot = arr[arr.length - 1]
