@@ -66,3 +66,15 @@
 // Divide and Conquer (Recursion/Loops) - Divide the problem into smaller sub-problems and combine them, eg: Binary Search, Quick Sort, Merge Sort, Tower Of Hanoi
 // Dynamic Programming (Memoization with Recursion/Loops) - Store and use previously solved sub-problems to solve larger problems, eg: Fibonacci series, Climbing Staircase
 // Backtracking (Trees/Recursion) - Generate all possible solutions, check if a path satisfies constraints, continue or backtrack to continue to different path, eg: N-Queens Problem  
+
+// Further Learning
+
+// Priority Queue
+// Circular Linked List
+// AVL Trees, Red Black Trees and Tries
+// Directed acyclic graphs
+// Prim's, Kruskal's, Floyd's, Dijkstra's and A* algorithms
+// Disjoint Sets/ Union Find
+
+
+// Solve Problems
